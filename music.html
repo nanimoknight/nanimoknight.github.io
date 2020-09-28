@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NanimoKnight</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="index.css" type="text/css" rel="stylesheet" />
+  <link href="gallery.css" type="text/css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="gallery.js"></script>
+  <!-- Show 4 gallery pieces per row -->
+  <style>
+    div.gallery {
+      width: 24.4%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="blurredbackground"></div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html">NanimoKnight</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bestWork.html">Best Works</a></li>
+        <li><a href="digitalPaintings.html">Digital Paintings</a></li>
+        <li><a href="traditionalPaintings.html">Traditional Paintings</a></li>
+        <li><a href="animations.html">Animations</a></li>
+        <li><a href="sketches.html">Sketches</a></li>
+        <li class="active"><a href="music.html">Music</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-left">    
+  <div class="row content">
+    <div class="col-sm-1 sidenav">
+      <p><h3>Social Media</h3></p>
+      <p><a href="https://twitter.com/NanimoKnight" target="_blank">Twitter</a></p>
+      <p><a href="https://www.deviantart.com/3beccaboo" target="_blank">DeviantArt</a></p>
+      <p><a href="https://www.wysp.ws/rrolli/" target="_blank">Wysp</a></p>
+      <p><a href="https://soundcloud.com/nanimoknight" target="_blank">SoundCloud</a></p>
+
+      <img src="art/digital paintings/092619.png" alt="092619" width=100%>
+    </div>
+    <div class="col-sm-10 text-left" id="playable-gallery"> 
+      <h1>NanimoKnight Music</h1>
+      <hr>
+      <h3>2020</h3>
+      <hr>
+        <div class="gallery">
+          <img src="art/music artwork/album 1.png" alt="Simple Beginnings" width="600" height="400" class="modal-img">
+          <audio controls class="playable-media">
+            <source src="art/music/051520 Simple Beginnings.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+          <div class="desc">Simple Beginnings</div>
+        </div>
+
+        <div class="gallery">
+          <img src="art/music artwork/album 2.png" alt="I Want My Night Light" width="600" height="400" class="modal-img">
+          <audio controls class="playable-media">
+            <source src="art/music/051720 I Want My Night Light.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+          <div class="desc">I Want My Night Light</div>
+        </div>
+
+        <div class="gallery">
+          <img src="art/music artwork/album 3.png" alt="The Return" width="600" height="400" class="modal-img">
+          <audio controls class="playable-media">
+            <source src="art/music/061020 The Return.wav" type="audio/wav">
+          Your browser does not support the audio element.
+          </audio>
+          <div class="desc">The Return</div>
+        </div>
+
+        <div class="gallery">
+          <img src="art/music artwork/album 4.png" alt="The Year Spring Went Missing" width="600" height="400" class="modal-img">
+          <audio controls class="playable-media">
+            <source src="art/music/061520 The Year Spring Went Missing.wav" type="audio/wav">
+          Your browser does not support the audio element.
+          </audio>
+          <div class="desc">The Year Spring Went Missing</div>
+        </div>
+
+        <div class="gallery">
+          <img src="art/music artwork/album 5.png" alt="Justice Will Come Again" width="600" height="400" class="modal-img">
+          <audio controls class="playable-media">
+            <source src="art/music/062320 Justice Will Come Again.wav" type="audio/wav">
+          Your browser does not support the audio element.
+          </audio>
+          <div class="desc">Justice Will Come Again</div>
+        </div>
+
+        <div class="gallery">
+          <img src="art/music artwork/album 6.png" alt="Slap Stick Plastic" width="600" height="400" class="modal-img">
+          <audio controls class="playable-media">
+            <source src="art/music/070720 Slap Stick Plastic.wav" type="audio/wav">
+          Your browser does not support the audio element.
+          </audio>
+          <div class="desc">Slap Stick Plastic</div>
+        </div>
+
+    </div>
+    <!-- <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img-in-modal">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
+
+<footer class="navbar navbar-fixed-bottom">
+  <p>NanimoKnight Art</p>
+</footer>
+
+</body>
+</html>

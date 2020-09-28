@@ -1,0 +1,122 @@
+/*
+  Name: Rebecca Rollins
+  Description: The main CSS file for NanimoKnight website
+*/
+
+body {
+  background-color: #193c4f
+  color: #faf8e8;
+  height: 100%;
+}
+
+#blurredbackground {
+	background: url('102518 wallpaper.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    
+	position: absolute;    /*matches #content position*/
+	background-attachment: fixed;
+	position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0px; left: 0px;    /*matches #content position*/
+    width: 100%;    /*matches #content width*/
+    height: 100%;    /*matches #content height*/
+    -webkit-filter: blur(6px);
+    filter: blur(6px);
+    z-index: -1;
+}
+
+p {
+	color: #faf8e8;
+	/*background-color: #286375;*/
+	background-color: rgba(40, 99, 117, .60);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	display:inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+h1, h2, h3 {
+	/*background-color: #286375;*/
+	background-color: rgba(40, 99, 117, .60);
+	color: #faf8e8;
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	display:inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+img {
+	border-radius: 10px;
+	border: 3px solid #286375;
+	vertical-align: right;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: #080a26;
+  color: #faf8e8;
+}
+
+.navbar-inverse .navbar-brand {
+	font-size: 24px;
+	color: #47decf;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 30%}
+
+/* Set background color and 100% height */
+.sidenav {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  background-color: #232759;
+  color: #faf8e8;
+  height: 100%;
+  overflow: false
+}
+
+.sidenav a {
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #ffee6e;
+}
+
+#main-img {
+  width: 100%;
+  height: auto;
+}
+
+.sidenav h3 {
+  margin-top: 5px;
+}
+
+audio {
+	width: 100%;
+}
+
+/* Set background color, white text and some padding */
+footer {
+  background-color: #080a26;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
+}
