@@ -3,11 +3,6 @@
   Description: CSS file for art galleries
 */
 
-*{
-  padding: 0,
-  margin: 0;
-}
-
 div.gallery {
   margin: 3px;
   border-radius: 10px;
@@ -55,6 +50,7 @@ div.col-sm-10.text-left h3, hr {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 0px; /* Location of the box */
+    margin-bottom: ;
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -80,8 +76,7 @@ div.col-sm-10.text-left h3, hr {
     max-width: 700px;
     text-align: center;
     color: #ccc;
-    padding: 10px 0;
-    height: 150px;
+    margin-bottom: 70px;
 }
 
 /* Add Animation - Zoom in the Modal */
