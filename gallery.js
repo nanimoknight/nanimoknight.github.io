@@ -16,13 +16,13 @@
 		var modal = document.getElementById("myModal");
 	    if(modal){
 	        createModal(modal);
-	    }
 
-		// Lazy image load
-	  	lazyload(modal);
-	  	document.addEventListener("scroll", lazyload);
-		window.addEventListener("resize", lazyload);
-		window.addEventListener("orientationChange", lazyload);
+	        // Lazy image load
+		  	lazyload(modal);
+		  	document.addEventListener("scroll", lazyload);
+			window.addEventListener("resize", lazyload);
+			window.addEventListener("orientationChange", lazyload);
+	    }
 		
 		// Make sure only one media plays at a time
 		onlyPlayOneIn(document.body);
@@ -82,8 +82,7 @@
 
 	// Lazy image loading
 	function lazyload (modal) {
-		var lazyloadImages = document.querySelectorAll("img.lazy");  
-		console.log("inside lazy");
+		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if(lazyloadThrottleTimeout) {
 		  clearTimeout(lazyloadThrottleTimeout);
 		}  
@@ -91,10 +90,8 @@
 		console.log(lazyloadImages.length);
 
 		lazyloadThrottleTimeout = setTimeout(function() {
-			console.log("inside lazy timeout");
 		    var scrollTop = window.pageYOffset;
 		    lazyloadImages.forEach(function(img) {
-		    	console.log("inside lazy for each");
 		        if(img.offsetTop < (window.innerHeight + scrollTop)) {
 		          img.src = img.dataset.src;
 		          img.classList.remove('lazy');
