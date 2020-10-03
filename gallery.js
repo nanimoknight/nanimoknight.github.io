@@ -12,7 +12,7 @@
 
 	// Setup
 	window.onload = function() {
-		test("art/digital paintings/");
+		test("art/digital paintings/", document.getElementById('galleryList'));
 		// addArt(document.getElementById())
 
 		// Set up Modal for images if Modal div is present
@@ -32,29 +32,43 @@
 
 	};
 
-	function test(testFolder) {
-		var xhr = new XMLHttpRequest();
-		console.log("in test function");
-		xhr.open("GET", "/art/digital paintings", true);
-		xhr.responseType = 'document';
-		xhr.onload = () => {
-		  console.log("in test xhr onload");
-		  if (xhr.status === 200) {
-		  	console.log("in status 200");
-		    var elements = xhr.response.getElementsByTagName("a");
-		    for (x of elements) {
-		      if ( x.href.match(/\.(jpe?g|png|mp4)$/) ) { 
-		          console.log("add file " + x);
-		      } 
-		    };
-		  } 
-		  else {
-		    alert('Request failed. Returned status of ' + xhr.status);
-		  }
-		}
-		console.log("preparing to send xhr");
-		xhr.send()
-		console.log("xhr sent");
+	function test(folder, galleryList) {
+		// var xhr = new XMLHttpRequest();
+		// xhr.open("GET", "/art/digital paintings", true);
+		// xhr.responseType = 'document';
+		// xhr.onload = () => {
+		//   console.log("in test xhr onload");
+		//   if (xhr.status === 200) {
+		//   	console.log("in status 200");
+		//     var elements = xhr.response.getElementsByTagName("a");
+		//     for (x of elements) {
+		//       if ( x.href.match(/\.(jpe?g|png|mp4)$/) ) { 
+		//           console.log("add file " + x);
+		//       } 
+		//     };
+		//   } 
+		//   else {
+		//     alert('Request failed. Returned status of ' + xhr.status);
+		//   }
+		// }
+		// xhr.send();
+	    var ajax=new XMLHttpRequest();
+	    ajax.open("GET",folder,true);
+	    ajax.onload=function () {
+	    	console.log("ajax onload");
+	        ajax.responseType="document";
+	        var elements=ajax.responseText.getElementsByTagname("A");
+	        for(x of elements){
+	        	console.log("at file " + x);
+	            if(request.status[0]==2 && x.href.match(/\.(jpe?g|png|gif)$/)) { 
+	                let img=document.createElement("img");
+	                img.src=folder+x.href;
+	                console.log("add file " + x);
+	                galleryList.appendChild(img);
+	            } 
+	        };
+	    }
+	    ajax.send();
 	}
 
 	function addArt(fileName) {
