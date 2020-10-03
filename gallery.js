@@ -34,7 +34,7 @@
 
 	function test(folder, galleryList) {
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "/art/digital paintings", true);
+		xhr.open("GET", "/art/digital paintings/fileList.html", true);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
 		  console.log("in test xhr onload");
