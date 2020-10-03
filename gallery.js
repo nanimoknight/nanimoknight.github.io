@@ -12,6 +12,9 @@
 
 	// Setup
 	window.onload = function() {
+		test("art/digital paintings/")
+		// addArt(document.getElementById())
+
 		// Set up Modal for images if Modal div is present
 		var modal = document.getElementById("myModal");
 	    if(modal){
@@ -28,6 +31,81 @@
 		onlyPlayOneIn(document.body);
 
 	};
+
+	function test(testFolder) {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "/art/digital paintings", true);
+		xhr.responseType = 'document';
+		xhr.onload = () => {
+		  if (xhr.status === 200) {
+		    var elements = xhr.response.getElementsByTagName("a");
+		    for (x of elements) {
+		      if ( x.href.match(/\.(jpe?g|png|mp4)$/) ) { 
+		          console.log("add file " + x);
+		      } 
+		    };
+		  } 
+		  else {
+		    alert('Request failed. Returned status of ' + xhr.status);
+		  }
+		}
+		xhr.send()
+	}
+
+	function addArt(fileName) {
+		var type;
+		var folder = "art/digital paintings/";
+		var i;
+		for(i=0; i < 5; i++) {
+			var galleryElement = document.createElement('gallery'); 
+			fileName = "092420"
+			type = "png"
+			if (type == jpg || type == png) {
+				// Load png or jpeg image
+				var image = document.createElement('img');  
+            	image.dataset.src = folder + "/" + fileName; 
+            	image.alt = fileName;
+            	image.width = "100%"
+            	image.classList.appendChild("modal-img", "lazy")
+
+            	var description = document.createElement('div'); 
+            	description.innerHTML = fileName;
+
+            	galleryElement.appendChild(image);
+            	galleryElement.appendChild(description);
+			}
+			else if (type == mp4) {
+				// load mp4 video
+				var video = document.createElement('video');
+            	video.width = "100%"
+            	video.controls = true
+            	video.loop = true
+
+            	var source = document.createElement('source');
+            	source.src = folder + "/" + fileName;
+            	source.type = "video/mp4"
+
+            	video.innerHTML = "Your browser does not support the video tag."
+            	video.appendChild(source);
+
+            	var description = document.createElement('div'); 
+            	description.innerHTML = fileName;
+
+            	galleryElement.appendChild(video);
+            	galleryElement.appendChild(description);
+			}
+			else if (type == wav || mp3) {
+				// load wav or mp3 song
+			}
+			else {
+				consolg.log("Error : could not load media of type " + type);
+				return;
+			}
+			
+			// Add galleryElement 
+            document.getElementById('galleryList').appendChild(galleryElement);
+		}
+	}
 
 	// Set up modal capability for image. Called during lazy loading
 	function prepModalForImage(image, modal) {
