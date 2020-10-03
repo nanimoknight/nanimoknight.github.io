@@ -60,7 +60,7 @@
 		var type = filePath.split('.').pop();
 		var filename = fileLink.innerHTML;
 		var galleryElement = document.createElement('gallery');
-		if (type == jpg || type == png) {
+		if (type == "jpg" || type == "png") {
 			// Load png or jpeg image
 			var image = document.createElement('img');  
         	image.dataset.src = filePath; 
@@ -74,7 +74,7 @@
         	galleryElement.appendChild(image);
         	galleryElement.appendChild(description);
 		}
-		else if (type == mp4) {
+		else if (type == "mp4") {
 			// load mp4 video
 			var video = document.createElement('video');
         	video.width = "100%"
@@ -94,7 +94,7 @@
         	galleryElement.appendChild(video);
         	galleryElement.appendChild(description);
 		}
-		else if (type == wav || mp3) {
+		else if (type == "wav" || "mp3") {
 			// load wav or mp3 song
 		}
 		else {
