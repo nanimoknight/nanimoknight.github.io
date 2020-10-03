@@ -33,42 +33,25 @@
 	};
 
 	function test(folder, galleryList) {
-		// var xhr = new XMLHttpRequest();
-		// xhr.open("GET", "/art/digital paintings", true);
-		// xhr.responseType = 'document';
-		// xhr.onload = () => {
-		//   console.log("in test xhr onload");
-		//   if (xhr.status === 200) {
-		//   	console.log("in status 200");
-		//     var elements = xhr.response.getElementsByTagName("a");
-		//     for (x of elements) {
-		//       if ( x.href.match(/\.(jpe?g|png|mp4)$/) ) { 
-		//           console.log("add file " + x);
-		//       } 
-		//     };
-		//   } 
-		//   else {
-		//     alert('Request failed. Returned status of ' + xhr.status);
-		//   }
-		// }
-		// xhr.send();
-	    var ajax=new XMLHttpRequest();
-	    ajax.open("GET",folder,true);
-	    ajax.onload=function () {
-	    	console.log("ajax onload");
-	        ajax.responseType="document";
-	        var elements=ajax.responseText.getElementsByTagname("A");
-	        for(x of elements){
-	        	console.log("at file " + x);
-	            if(request.status[0]==2 && x.href.match(/\.(jpe?g|png|gif)$/)) { 
-	                let img=document.createElement("img");
-	                img.src=folder+x.href;
-	                console.log("add file " + x);
-	                galleryList.appendChild(img);
-	            } 
-	        };
-	    }
-	    ajax.send();
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "/art/digital paintings", true);
+		xhr.responseType = 'document';
+		xhr.onload = () => {
+		  console.log("in test xhr onload");
+		  if (xhr.status === 200) {
+		  	console.log("in status 200");
+		    var elements = xhr.response.getElementsByTagName("a");
+		    for (x of elements) {
+		      if ( x.href.match(/\.(jpe?g|png|mp4)$/) ) { 
+		          console.log("add file " + x);
+		      } 
+		    };
+		  } 
+		  else {
+		    alert('Request failed. Returned status of ' + xhr.status);
+		  }
+		}
+		xhr.send();
 	}
 
 	function addArt(fileName) {
