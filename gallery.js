@@ -42,10 +42,8 @@
 		  	console.log("in status 200");
 		    var elements = xhr.response.getElementsByTagName("a");
 		    for (var i = 0; i < elements.length; i++) {
-		      // if ( elements[i].href.match(/\.(jpe?g|png)$/) ) { 
-		          console.log("add file " + elements[i].innerHTML);
-		          addArt(elements[i]);
-		      // } 
+	          console.log("add file " + elements[i].innerHTML);
+	          addArt(elements[i]);
 		    }
 		  } 
 		  else {
@@ -56,7 +54,7 @@
 	}
 
 	function addArt(fileLink) {
-		var filePath = fileLink.href
+		var filePath = fileLink.href;
 		var type = filePath.split('.').pop();
 		var filename = fileLink.innerHTML;
 		var galleryElement = document.createElement('gallery');
@@ -65,8 +63,7 @@
 			var image = document.createElement('img');  
         	image.dataset.src = filePath; 
         	image.alt = filename;
-        	image.width = "100%"
-        	image.classList.appendChild("modal-img", "lazy")
+        	image.classList.add("modal-img", "lazy");
 
         	var description = document.createElement('div'); 
         	description.innerHTML = filename;
@@ -77,15 +74,16 @@
 		else if (type == "mp4") {
 			// load mp4 video
 			var video = document.createElement('video');
-        	video.width = "100%"
-        	video.controls = true
-        	video.loop = true
+        	video.width = "100%";
+        	video.controls = true;
+        	video.loop = true;
+        	video.classList.add("playable-media");
 
         	var source = document.createElement('source');
         	source.src = filePath;
-        	source.type = "video/mp4"
+        	source.type = "video/mp4";
 
-        	video.innerHTML = "Your browser does not support the video tag."
+        	video.innerHTML = "Your browser does not support the video tag.";
         	video.appendChild(source);
 
         	var description = document.createElement('div'); 
@@ -96,6 +94,33 @@
 		}
 		else if (type == "wav" || "mp3") {
 			// load wav or mp3 song
+			var image = document.createElement('img');  
+        	image.dataset.src = filePath.substr(0, filePath.lastIndexOf(".") + ".png"; 
+        	image.alt = filename;
+        	image.classList.add("modal-img", "lazy");
+
+			var audio = document.createElement('audio');
+        	audio.controls = true;
+        	audio.loop = true;
+        	audio.classList.add("playable-media");
+
+        	var source = document.createElement('source');
+        	source.src = filePath;
+        	if(mp3) {
+        		source.type = "audio/mpeg";
+        	}
+        	else {
+        		source.type = "audio/wav";
+        	}
+
+        	audio.innerHTML = "Your browser does not support the audio element.";
+        	audio.appendChild(source);
+
+        	var description = document.createElement('div'); 
+        	description.innerHTML = filename;
+
+        	galleryElement.appendChild(audio);
+        	galleryElement.appendChild(description);
 		}
 		else {
 			consolg.log("Error : could not load media of type " + type);
