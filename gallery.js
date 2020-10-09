@@ -53,7 +53,7 @@
 		if (callback) {
 			xhr.addEventListener('error', callback);
 		}
-		xhr.open("GET", fileList, false);
+		xhr.open("GET", fileList, true);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
 		  if (xhr.status === 200) {
