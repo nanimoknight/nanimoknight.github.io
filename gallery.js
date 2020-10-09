@@ -66,6 +66,7 @@
 		  }
 		}
 		xhr.send();
+		return;
 	}
 
 	function addArt(galleryType, fileLink) {
