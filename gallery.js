@@ -12,15 +12,16 @@
 
 	// Setup
 	window.onload = function() {
-		// Set up Modal for images if Modal div is present
+		// Get the current page
+		var path = window.location.pathname;
+		var page = path.split("/").pop().slice(0, -5);
+
+		// Load gallery, images, modal
 		var modal = document.getElementById("myModal");
-	    if(modal){
+	    if(modal  || page == "animations"){
 	        createModal(modal);
 
 	        // Load the gallery depending on the page
-			var path = window.location.pathname;
-			// Get html file name to use for laoding the correct gallery
-			var page = path.split("/").pop().slice(0, -5);
 			LoadGallery(page);
 
 	        // Lazy image load
