@@ -51,7 +51,7 @@
 		    	}
 		    	else {
 		    		console.log("add file " + elements[i].innerHTML);
-	          		addArt(galleryType, elements[i], section);
+	          		addArt(galleryType, elements[i]);
 		    	}
 		    }
 		  } 
