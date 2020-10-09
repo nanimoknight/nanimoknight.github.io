@@ -63,11 +63,9 @@
 	}
 
 	function addArt(galleryType, fileLink) {
-		var fullPath = "art/" + galleryType + "/" + fileLink.src;
+		var fullPath = "art/" + galleryType + "/" + fileLink.data-src;
 		console.log("full path: " + fullPath);
-		var filePath = fileLink.src;
-		console.log("file path: " + filePath);
-		var type = filePath.split('.').pop();
+		var type = fileLink.data-src.split('.').pop();
 		console.log("file type: " + type);
 		var filename = fileLink.innerHTML;
 		var galleryElement = document.createElement('div');
