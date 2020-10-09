@@ -46,7 +46,7 @@
 		    for (var i = 0; i < elements.length; i++) {
 		    	if (elements[i].classList.contains(header)) {
 		    		// Create new header
-		    		hr = document.createElement('hr');
+		    		var hr = document.createElement('hr');
 		    		var title = document.createElement('h3');
 		    		title.innerHtml = elements[i].innerHTML;
 		    		document.getElementById('galleryList').appendChild(hr);
