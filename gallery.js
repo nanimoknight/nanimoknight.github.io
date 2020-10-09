@@ -193,7 +193,7 @@
 	}
 
 	// Lazy image loading
-	async function lazyload (page, modal) {
+	function lazyload (page, modal) {
 		// Wait for the gallery to finish loading
 		LoadGallery(page, function (response) {alert(response);});
 
