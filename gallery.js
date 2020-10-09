@@ -24,8 +24,10 @@
 	    }
 
 	    // Load the gallery
-		LoadGallery(page);
-
+	    if(page) {
+	    	LoadGallery(page);
+	    }
+		
 		// Lazy image load
 		if(modal) {
 	    	lazyload(page, modal);
@@ -193,7 +195,7 @@
 	async function lazyload (page, modal) {
 		// Wait for the gallery to finish loading
 		await LoadGallery();
-		
+
 		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if(lazyloadThrottleTimeout) {
 		  clearTimeout(lazyloadThrottleTimeout);
