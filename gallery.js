@@ -30,9 +30,12 @@
 		
 		// Lazy image load
 		if (modal) {
-			LoadGallery(page, function () {
+			console.log("page: " + page)
+			loadGallery(page, function () {
+				console.log("func lazyload 2");
 			    lazyload(page, modal);
 			}, function () {
+				console.log("func lazyload 2");
 			    lazyload(page, modal);
 			});
 	    	// lazyload(page, modal);
@@ -46,7 +49,8 @@
 
 	};
 
-	function LoadGallery(galleryType, callback) {
+	function loadGallery(galleryType, callback) {
+		console.log("loadGallery")
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
 		xhr.addEventListener('load', callback);
@@ -79,6 +83,7 @@
 	}
 
 	function addArt(galleryType, fileLink) {
+		console.log("addArt");
 		var fullPath = "art/" + galleryType + "/" + fileLink.id;
 		console.log("full path: " + fullPath);
 		var type = fileLink.id.split('.').pop();
@@ -89,6 +94,7 @@
 
 		if (type == "jpg" || type == "png") {
 			// Load png or jpeg image
+			console.log("file is an image");
 			var image = document.createElement('img');  
         	image.dataset.src = fullPath
         	image.alt = filename;
@@ -97,6 +103,7 @@
 		}
 		else if (type == "mp4") {
 			// load mp4 video
+			console.log("file is a video");
 			var video = document.createElement('video');
         	video.controls = true;
         	video.loop = true;
@@ -112,6 +119,7 @@
 		}
 		else if (type == "wav" || "mp3") {
 			// load wav or mp3 song
+			console.log("file is a song");
 			var image = document.createElement('img');  
         	image.dataset.src = "art/musicArtwork/" + filename + ".png"; 
         	image.alt = filename;
@@ -152,6 +160,7 @@
 
 	// Set up modal capability for image. Called during lazy loading
 	function prepModalForImage(image, modal) {
+		console.log("prepModalForImage");
 		var modalImg = document.getElementById("img-in-modal");
 		var caption = document.getElementById("caption");
 		image.onclick = function(){
@@ -167,6 +176,7 @@
 
 	// Set up the modal
 	function createModal(modal){
+		console.log("creatingModal");
 		var img = document.getElementsByClassName("modal-img");
 		var modalImg = document.getElementById("img-in-modal");
 		var caption = document.getElementById("caption");
@@ -189,6 +199,7 @@
 
 	// Make sure only one media can play at a time
 	function onlyPlayOneIn(container) {
+		console.log("onlyPlayOneIn");
 		container.addEventListener("play", function(event) {
 			var audio_elements = container.getElementsByClassName("playable-media")
 			var i;
@@ -204,7 +215,7 @@
 	// Lazy image loading
 	function lazyload (page, modal) {
 		// Wait for the gallery to finish loading
-		// LoadGallery(page, function (response) {alert(response);});
+		// loadGallery(page, function (response) {alert(response);});
 
 		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if (lazyloadThrottleTimeout) {
