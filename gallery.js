@@ -95,7 +95,7 @@
 		else if (type == "wav" || "mp3") {
 			// load wav or mp3 song
 			var image = document.createElement('img');  
-        	image.dataset.src = filePath.substr(0, filePath.lastIndexOf(".") + ".png"; 
+        	image.dataset.src = filePath.substr(0, filePath.lastIndexOf(".")) + ".png"; 
         	image.alt = filename;
         	image.classList.add("modal-img", "lazy");
 
