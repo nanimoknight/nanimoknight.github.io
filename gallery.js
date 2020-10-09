@@ -47,7 +47,7 @@
 		    	if (elements[i].classList.contains("header")) {
 		    		// Create a new header
 		    		var title = elements[i].innerHTML;
-		    		document.getElementById('galleryList').appendChild(title);
+		    		document.getElementById('galleryList').innerHTML += title;
 		    	}
 		    	else {
 		    		console.log("add file " + elements[i].innerHTML);
