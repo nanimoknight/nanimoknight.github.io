@@ -67,6 +67,7 @@
 
         	var description = document.createElement('div'); 
         	description.innerHTML = filename;
+		description.classList.add("desc");
 
         	galleryElement.appendChild(image);
         	galleryElement.appendChild(description);
@@ -88,6 +89,7 @@
 
         	var description = document.createElement('div'); 
         	description.innerHTML = filename;
+		description.classList.add("desc");
 
         	galleryElement.appendChild(video);
         	galleryElement.appendChild(description);
@@ -118,6 +120,7 @@
 
         	var description = document.createElement('div'); 
         	description.innerHTML = filename;
+		description.classList.add("desc");
 
         	galleryElement.appendChild(audio);
         	galleryElement.appendChild(description);
