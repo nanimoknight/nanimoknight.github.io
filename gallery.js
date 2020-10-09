@@ -12,8 +12,11 @@
 
 	// Setup
 	window.onload = function() {
-		test("/art/digital paintings/fileList.html");
-		// addArt(document.getElementById())
+		// Load the gallery depending on the page
+		var path = window.location.pathname;
+		// Get html file name to use for laoding the correct gallery
+		var page = path.split("/").pop().slice(0, -5);
+		LoadGallery(page);
 
 		// Set up Modal for images if Modal div is present
 		var modal = document.getElementById("myModal");
@@ -32,18 +35,28 @@
 
 	};
 
-	function test(fileList) {
+	function LoadGallery(galleryType) {
+		fileList = "/art/" + page + "/fileList.html";
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", fileList, true);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
-		  console.log("in test xhr onload");
 		  if (xhr.status === 200) {
-		  	console.log("in status 200");
-		    var elements = xhr.response.getElementsByTagName("a");
+		    var elements = xhr.response.getElementsByTagName("div");
 		    for (var i = 0; i < elements.length; i++) {
-	          console.log("add file " + elements[i].innerHTML);
-	          addArt(elements[i]);
+		    	if (elements[i].classList.contains(header)) {
+		    		// Create new header
+		    		hr = document.createElement('hr');
+		    		var title = document.createElement('h3');
+		    		title.innerHtml = elements[i].innerHTML;
+		    		document.getElementById('galleryList').appendChild(hr);
+		    		document.getElementById('galleryList').appendChild(title);
+		    		document.getElementById('galleryList').appendChild(hr);
+		    	}
+		    	else {
+		    		console.log("add file " + elements[i].innerHTML);
+	          		addArt(galleryType, elements[i], section);
+		    	}
 		    }
 		  } 
 		  else {
@@ -53,24 +66,20 @@
 		xhr.send();
 	}
 
-	function addArt(fileLink) {
-		var filePath = fileLink.href;
+	function addArt(galleryType, fileLink) {
+		var fullPath = "art/" + galleryType + "/" + fileLink.src;
 		var type = filePath.split('.').pop();
 		var filename = fileLink.innerHTML;
-		var galleryElement = document.createElement('gallery');
+		var galleryElement = document.createElement('div');
+		galleryElement.classList.add("gallery");
+
 		if (type == "jpg" || type == "png") {
 			// Load png or jpeg image
 			var image = document.createElement('img');  
-        	image.dataset.src = filePath; 
+        	image.dataset.src = fullPath
         	image.alt = filename;
         	image.classList.add("modal-img", "lazy");
-
-        	var description = document.createElement('div'); 
-        	description.innerHTML = filename;
-		description.classList.add("desc");
-
         	galleryElement.appendChild(image);
-        	galleryElement.appendChild(description);
 		}
 		else if (type == "mp4") {
 			// load mp4 video
@@ -81,23 +90,17 @@
         	video.classList.add("playable-media");
 
         	var source = document.createElement('source');
-        	source.src = filePath;
+        	source.src = fullPath;
         	source.type = "video/mp4";
 
         	video.innerHTML = "Your browser does not support the video tag.";
         	video.appendChild(source);
-
-        	var description = document.createElement('div'); 
-        	description.innerHTML = filename;
-		description.classList.add("desc");
-
         	galleryElement.appendChild(video);
-        	galleryElement.appendChild(description);
 		}
 		else if (type == "wav" || "mp3") {
 			// load wav or mp3 song
 			var image = document.createElement('img');  
-        	image.dataset.src = filePath.substr(0, filePath.lastIndexOf(".")) + ".png"; 
+        	image.dataset.src = "art/musicArtwork/" + filename + ".png"; 
         	image.alt = filename;
         	image.classList.add("modal-img", "lazy");
 
@@ -107,7 +110,7 @@
         	audio.classList.add("playable-media");
 
         	var source = document.createElement('source');
-        	source.src = filePath;
+        	source.src = fullPath;
         	if(mp3) {
         		source.type = "audio/mpeg";
         	}
@@ -117,18 +120,18 @@
 
         	audio.innerHTML = "Your browser does not support the audio element.";
         	audio.appendChild(source);
-
-        	var description = document.createElement('div'); 
-        	description.innerHTML = filename;
-		description.classList.add("desc");
-
         	galleryElement.appendChild(audio);
-        	galleryElement.appendChild(description);
 		}
 		else {
 			consolg.log("Error : could not load media of type " + type);
 			return;
 		}
+
+		// Add the description
+		var description = document.createElement('div'); 
+        description.innerHTML = filename;
+		description.classList.add("desc");
+		galleryElement.appendChild(description);
 		
 		// Add galleryElement 
         document.getElementById('galleryList').appendChild(galleryElement);
