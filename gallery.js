@@ -19,17 +19,17 @@
 
 		// Load gallery, images, modal
 		modal = document.getElementById("myModal");
-		if(modal) {
+		if (modal) {
 	    	createModal(modal);
 	    }
 
 	    // Load the gallery
-	    if(page) {
+	    if (page == "animations") {
 	    	LoadGallery(page);
 	    }
 		
 		// Lazy image load
-		if(modal) {
+		if (modal) {
 	    	lazyload(page, modal);
 		  	document.addEventListener("scroll", lazyload);
 			window.addEventListener("resize", lazyload);
@@ -114,7 +114,7 @@
 
         	var source = document.createElement('source');
         	source.src = fullPath;
-        	if(type == "mp3") {
+        	if (type == "mp3") {
         		source.type = "audio/mpeg";
         	}
         	else {
@@ -194,10 +194,10 @@
 	// Lazy image loading
 	async function lazyload (page, modal) {
 		// Wait for the gallery to finish loading
-		await LoadGallery();
+		await LoadGallery(page);
 
 		var lazyloadImages = document.querySelectorAll("img.lazy");
-		if(lazyloadThrottleTimeout) {
+		if (lazyloadThrottleTimeout) {
 		  clearTimeout(lazyloadThrottleTimeout);
 		}  
 		console.log("Lazy count");
@@ -206,13 +206,13 @@
 		lazyloadThrottleTimeout = setTimeout(function() {
 		    var scrollTop = window.pageYOffset;
 		    lazyloadImages.forEach(function(img) {
-		        if(img.offsetTop < (window.innerHeight + scrollTop)) {
+		        if (img.offsetTop < (window.innerHeight + scrollTop)) {
 		          img.src = img.dataset.src;
 		          img.classList.remove('lazy');
 		          prepModalForImage(img, modal);
 		        }
 		    });
-		    if(lazyloadImages.length == 0) { 
+		    if (lazyloadImages.length == 0) { 
 		      document.removeEventListener("scroll", lazyload);
 		      window.removeEventListener("resize", lazyload);
 		      window.removeEventListener("orientationChange", lazyload);
