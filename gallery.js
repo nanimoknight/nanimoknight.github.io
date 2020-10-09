@@ -46,12 +46,12 @@
 
 	};
 
-	function LoadGallery(galleryType, error_callback) {
+	function LoadGallery(galleryType, callback) {
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
 		xhr.addEventListener('load', callback);
-		if (error_callback) {
-			xhr.addEventListener('error', error_callback);
+		if (callback) {
+			xhr.addEventListener('error', callback);
 		}
 		xhr.open("GET", fileList, false);
 		xhr.responseType = 'document';
