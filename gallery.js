@@ -44,7 +44,7 @@
 		  if (xhr.status === 200) {
 		    var elements = xhr.response.getElementsByTagName("div");
 		    for (var i = 0; i < elements.length; i++) {
-		    	if (elements[i].classList.contains(header)) {
+		    	if (elements[i].classList.contains("header")) {
 		    		// Create a new header
 		    		var title = elements[i].innerHTML;
 		    		document.getElementById('galleryList').appendChild(title);
