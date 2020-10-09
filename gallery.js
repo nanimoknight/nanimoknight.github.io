@@ -23,15 +23,23 @@
 	    	createModal(modal);
 	    }
 
-        // Load the gallery depending on the page
+	    // Load the gallery
 		LoadGallery(page);
-		
+
+		// Lazy image load
+		if(modal) {
+	    	lazyload(page, modal);
+		  	document.addEventListener("scroll", lazyload);
+			window.addEventListener("resize", lazyload);
+			window.addEventListener("orientationChange", lazyload);
+	    }
+	    
 		// Make sure only one media plays at a time
 		onlyPlayOneIn(document.body);
 
 	};
 
-	function LoadGallery(galleryType) {
+	async function LoadGallery(galleryType) {
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", fileList, true);
@@ -56,14 +64,6 @@
 		  }
 		}
 		xhr.send();
-
-		// Lazy image load
-		if(modal) {
-	    	lazyload(modal);
-		  	document.addEventListener("scroll", lazyload);
-			window.addEventListener("resize", lazyload);
-			window.addEventListener("orientationChange", lazyload);
-	    }
 	}
 
 	function addArt(galleryType, fileLink) {
@@ -190,7 +190,10 @@
 	}
 
 	// Lazy image loading
-	function lazyload (modal) {
+	async function lazyload (page, modal) {
+		// Wait for the gallery to finish loading
+		await LoadGallery();
+		
 		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if(lazyloadThrottleTimeout) {
 		  clearTimeout(lazyloadThrottleTimeout);
