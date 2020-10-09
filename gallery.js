@@ -25,13 +25,17 @@
 
 	    // Load the gallery
 	    if (page == "animations") {
-	    	// LoadGallery(page, function (response) {alert(response);});
-	    	LoadGallery(page);
+	    	LoadGallery(page, function (response) {alert(response);});\
 	    }
 		
 		// Lazy image load
 		if (modal) {
-	    	lazyload(page, modal);
+			syncLoad(my_url, function () {
+			    lazyload(page, modal);
+			}, function () {
+			    lazyload(page, modal);
+			});
+	    	// lazyload(page, modal);
 		  	document.addEventListener("scroll", lazyload);
 			window.addEventListener("resize", lazyload);
 			window.addEventListener("orientationChange", lazyload);
@@ -42,10 +46,13 @@
 
 	};
 
-	// function LoadGallery(galleryType, callback) {
-	function LoadGallery(galleryType) {
+	function LoadGallery(galleryType, error_callback) {
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
+		xhr.addEventListener('load', callback);
+		if (error_callback) {
+			xhr.addEventListener('error', error_callback);
+		}
 		xhr.open("GET", fileList, false);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
@@ -68,6 +75,8 @@
 		  }
 		}
 		xhr.send();
+		return xhr;
+
 	}
 
 	function addArt(galleryType, fileLink) {
@@ -196,8 +205,7 @@
 	// Lazy image loading
 	function lazyload (page, modal) {
 		// Wait for the gallery to finish loading
-		// LoadGallery(page, function (response) {alert(response);});
-		LoadGallery(page);
+		LoadGallery(page, function (response) {alert(response);});
 
 		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if (lazyloadThrottleTimeout) {
