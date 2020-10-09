@@ -25,7 +25,7 @@
 
 	    // Load the gallery
 	    if (page == "animations") {
-	    	LoadGallery(page, function (response) {alert(response);});\
+	    	LoadGallery(page, function (response) {alert(response);});
 	    }
 		
 		// Lazy image load
