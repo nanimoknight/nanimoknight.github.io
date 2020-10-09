@@ -30,7 +30,7 @@
 		
 		// Lazy image load
 		if (modal) {
-			syncLoad(my_url, function () {
+			LoadGallery(my_url, function () {
 			    lazyload(page, modal);
 			}, function () {
 			    lazyload(page, modal);
@@ -205,7 +205,7 @@
 	// Lazy image loading
 	function lazyload (page, modal) {
 		// Wait for the gallery to finish loading
-		LoadGallery(page, function (response) {alert(response);});
+		// LoadGallery(page, function (response) {alert(response);});
 
 		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if (lazyloadThrottleTimeout) {
