@@ -82,7 +82,6 @@
 		else if (type == "mp4") {
 			// load mp4 video
 			var video = document.createElement('video');
-        	video.width = "100%";
         	video.controls = true;
         	video.loop = true;
         	video.classList.add("playable-media");
@@ -109,7 +108,7 @@
 
         	var source = document.createElement('source');
         	source.src = fullPath;
-        	if(type == mp3) {
+        	if(type == "mp3") {
         		source.type = "audio/mpeg";
         	}
         	else {
