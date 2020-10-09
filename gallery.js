@@ -75,8 +75,7 @@
 		  }
 		}
 		xhr.send();
-		return xhr;
-
+		return xhr.response;
 	}
 
 	function addArt(galleryType, fileLink) {
