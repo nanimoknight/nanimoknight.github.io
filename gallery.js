@@ -30,7 +30,7 @@
 		
 		// Lazy image load
 		if (modal) {
-			LoadGallery(my_url, function () {
+			LoadGallery(page, function () {
 			    lazyload(page, modal);
 			}, function () {
 			    lazyload(page, modal);
