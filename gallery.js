@@ -25,7 +25,7 @@
 
 	    // Load the gallery
 	    if (page == "animations") {
-	    	LoadGallery(page);
+	    	LoadGallery(page, function (response) {alert(response);});
 	    }
 		
 		// Lazy image load
@@ -41,7 +41,7 @@
 
 	};
 
-	async function LoadGallery(galleryType) {
+	function LoadGallery(galleryType, callback) {
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", fileList, true);
@@ -66,7 +66,7 @@
 		  }
 		}
 		xhr.send();
-		return;
+		return xhr;
 	}
 
 	function addArt(galleryType, fileLink) {
@@ -195,7 +195,7 @@
 	// Lazy image loading
 	async function lazyload (page, modal) {
 		// Wait for the gallery to finish loading
-		await LoadGallery(page);
+		LoadGallery(page, function (response) {alert(response);});
 
 		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if (lazyloadThrottleTimeout) {
