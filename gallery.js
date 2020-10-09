@@ -44,7 +44,7 @@
 	function LoadGallery(galleryType, callback) {
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", fileList, true);
+		xhr.open("GET", fileList, false);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
 		  if (xhr.status === 200) {

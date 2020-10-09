@@ -66,6 +66,11 @@ img {
   color: #faf8e8;
 }
 
+.navbar a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .navbar-inverse .navbar-brand {
 	font-size: 24px;
 	color: #47decf;
@@ -81,7 +86,8 @@ img {
   background-color: #232759;
   color: #faf8e8;
   height: 100%;
-  overflow: false
+  overflow: false;
+  min-width: 150px;
 }
 
 .sidenav a {
