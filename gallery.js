@@ -36,7 +36,7 @@
 	};
 
 	function LoadGallery(galleryType) {
-		fileList = "/art/" + page + "/fileList.html";
+		var fileList = "/art/" + page + "/fileList.html";
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", fileList, true);
 		xhr.responseType = 'document';
