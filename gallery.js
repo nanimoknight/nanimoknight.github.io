@@ -9,6 +9,7 @@
 
 	// Global variables  
 	var lazyloadThrottleTimeout;
+	var modal;
 
 	// Setup
 	window.onload = function() {
@@ -17,19 +18,13 @@
 		var page = path.split("/").pop().slice(0, -5);
 
 		// Load gallery, images, modal
-		var modal = document.getElementById("myModal");
-	    if(modal  || page == "animations"){
-	        createModal(modal);
-
-	        // Load the gallery depending on the page
-			LoadGallery(page);
-
-	        // Lazy image load
-		  	lazyload(modal);
-		  	document.addEventListener("scroll", lazyload);
-			window.addEventListener("resize", lazyload);
-			window.addEventListener("orientationChange", lazyload);
+		modal = document.getElementById("myModal");
+		if(modal) {
+	    	createModal(modal);
 	    }
+
+        // Load the gallery depending on the page
+		LoadGallery(page);
 		
 		// Make sure only one media plays at a time
 		onlyPlayOneIn(document.body);
@@ -61,6 +56,14 @@
 		  }
 		}
 		xhr.send();
+
+		// Lazy image load
+		if(modal) {
+	    	lazyload(modal);
+		  	document.addEventListener("scroll", lazyload);
+			window.addEventListener("resize", lazyload);
+			window.addEventListener("orientationChange", lazyload);
+	    }
 	}
 
 	function addArt(galleryType, fileLink) {
