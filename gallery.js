@@ -109,7 +109,7 @@
 
         	var source = document.createElement('source');
         	source.src = fullPath;
-        	if(mp3) {
+        	if(type == mp3) {
         		source.type = "audio/mpeg";
         	}
         	else {
