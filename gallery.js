@@ -12,16 +12,16 @@
 
 	// Setup
 	window.onload = function() {
-		// Load the gallery depending on the page
-		var path = window.location.pathname;
-		// Get html file name to use for laoding the correct gallery
-		var page = path.split("/").pop().slice(0, -5);
-		LoadGallery(page);
-
 		// Set up Modal for images if Modal div is present
 		var modal = document.getElementById("myModal");
 	    if(modal){
 	        createModal(modal);
+
+	        // Load the gallery depending on the page
+			var path = window.location.pathname;
+			// Get html file name to use for laoding the correct gallery
+			var page = path.split("/").pop().slice(0, -5);
+			LoadGallery(page);
 
 	        // Lazy image load
 		  	lazyload(modal);
