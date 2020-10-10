@@ -37,15 +37,11 @@
 		console.log("loadGallery")
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				// Lazy load
-				lazyload(galleryType, modal);
-			  	document.addEventListener("scroll", lazyload);
-				window.addEventListener("resize", lazyload);
-				window.addEventListener("orientationChange", lazyload);
-			}
-		};
+		// xhr.onreadystatechange = function() {
+		// 	if (this.readyState == 4 && this.status == 200) {
+				
+		// 	}
+		// };
 		xhr.open("GET", fileList, true);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
@@ -62,6 +58,11 @@
 	          		addArt(galleryType, elements[i]);
 		    	}
 		    }
+		    // Lazy load
+			lazyload(galleryType, modal);
+		  	document.addEventListener("scroll", lazyload);
+			window.addEventListener("resize", lazyload);
+			window.addEventListener("orientationChange", lazyload);
 		  } 
 		  else {
 		    alert('Request failed. Returned status of ' + xhr.status);
