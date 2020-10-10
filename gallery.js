@@ -37,11 +37,6 @@
 		console.log("loadGallery")
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
-		// xhr.onreadystatechange = function() {
-		// 	if (this.readyState == 4 && this.status == 200) {
-				
-		// 	}
-		// };
 		xhr.open("GET", fileList, true);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
@@ -73,7 +68,7 @@
 
 	function addArt(galleryType, fileLink) {
 		console.log("addArt");
-		var fullPath = "art/" + galleryType + "/" + fileLink.id;
+		var fullPath = "art/" + fileLink.id;
 		console.log("full path: " + fullPath);
 		var type = fileLink.id.split('.').pop();
 		console.log("file type: " + type);
@@ -130,6 +125,7 @@
 
         	audio.innerHTML = "Your browser does not support the audio element.";
         	audio.appendChild(source);
+        	galleryElement.appendChild(image);
         	galleryElement.appendChild(audio);
 		}
 		else {
