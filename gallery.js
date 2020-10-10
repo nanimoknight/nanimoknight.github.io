@@ -68,11 +68,6 @@
 		  }
 		}
 		xhr.send();
-
-		if (xhr.responseType) {
-			galleryIsLoaded = true;
-		}
-		return xhr.response;
 	}
 
 	function addArt(galleryType, fileLink) {
