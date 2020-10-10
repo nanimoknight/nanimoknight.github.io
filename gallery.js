@@ -35,7 +35,13 @@
 
 	function loadGallery(galleryType) {
 		console.log("loadGallery")
-		var fileList = "/art/" + galleryType + "/fileList.html";
+		var fileList
+		if (galleryType == "bestWork") {
+			fileList = "/art/fileList.html";
+		}
+		else {
+			fileList = "/art/" + galleryType + "/fileList.html";
+		}
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", fileList, true);
 		xhr.responseType = 'document';
