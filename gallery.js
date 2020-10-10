@@ -37,7 +37,7 @@
 		console.log("loadGallery")
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
+		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				// Lazy load
 				lazyload(galleryType, modal);
