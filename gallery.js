@@ -21,27 +21,11 @@
 		modal = document.getElementById("myModal");
 		if (modal) {
 	    	createModal(modal);
+	    	console.log("page: " + page)
+			loadGallery(page);
 	    }
-
-	    // Load the gallery
 	    if (page == "animations") {
-	    	LoadGallery(page, function (response) {alert(response);});
-	    }
-		
-		// Lazy image load
-		if (modal) {
-			console.log("page: " + page)
-			loadGallery(page, function () {
-				console.log("func lazyload 2");
-			    lazyload(page, modal);
-			}, function () {
-				console.log("func lazyload 2");
-			    lazyload(page, modal);
-			});
-	    	// lazyload(page, modal);
-		  	document.addEventListener("scroll", lazyload);
-			window.addEventListener("resize", lazyload);
-			window.addEventListener("orientationChange", lazyload);
+	    	LoadGallery(page);
 	    }
 	    
 		// Make sure only one media plays at a time
@@ -49,14 +33,19 @@
 
 	};
 
-	function loadGallery(galleryType, callback) {
+	function loadGallery(galleryType) {
 		console.log("loadGallery")
 		var fileList = "/art/" + galleryType + "/fileList.html";
 		var xhr = new XMLHttpRequest();
-		xhr.addEventListener('load', callback);
-		if (callback) {
-			xhr.addEventListener('error', callback);
-		}
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				// Lazy load
+				lazyload(galleryType, modal);
+			  	document.addEventListener("scroll", lazyload);
+				window.addEventListener("resize", lazyload);
+				window.addEventListener("orientationChange", lazyload);
+			}
+		};
 		xhr.open("GET", fileList, true);
 		xhr.responseType = 'document';
 		xhr.onload = () => {
@@ -79,6 +68,10 @@
 		  }
 		}
 		xhr.send();
+
+		if (xhr.responseType) {
+			galleryIsLoaded = true;
+		}
 		return xhr.response;
 	}
 
@@ -214,9 +207,6 @@
 
 	// Lazy image loading
 	function lazyload (page, modal) {
-		// Wait for the gallery to finish loading
-		// loadGallery(page, function (response) {alert(response);});
-
 		var lazyloadImages = document.querySelectorAll("img.lazy");
 		if (lazyloadThrottleTimeout) {
 		  clearTimeout(lazyloadThrottleTimeout);
