@@ -143,7 +143,7 @@
 		var descriptionDiv = document.createElement('div'); 
 		descriptionDiv.classList.add("descDiv");
 		var descriptionDivRelative = document.createElement('div');
-		descriptionDivRelative.add("descDivRelative");
+		descriptionDivRelative.classList.add("descDivRelative");
 		var description = document.createElement('p');
 		description.classList.add("desc");
 		
