@@ -140,10 +140,17 @@
 		}
 
 		// Add the description
-		var description = document.createElement('div'); 
-        description.innerHTML = filename;
+		var descriptionDiv = document.createElement('div'); 
+		descriptionDiv.classList.add("descDiv");
+		var descriptionDivRelative = document.createElement('div');
+		descriptionDivRelative.add("descDivRelative");
+		var description = document.createElement('p');
 		description.classList.add("desc");
-		galleryElement.appendChild(description);
+		
+        description.innerHTML = filename;
+        descriptionDivRelative.appendChild(description);
+		descriptionDiv.appendChild(descriptionDivRelative);
+		galleryElement.appendChild(descriptionDiv);
 		
 		// Add galleryElement 
         document.getElementById('galleryList').appendChild(galleryElement);

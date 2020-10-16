@@ -2,13 +2,22 @@
   Name: Rebecca Rollins
   Description: CSS file for art galleries
 */
+div.galleryList {
+  position: relative;
+}
 
 div.gallery {
-  margin: 3px;
+  position: relative;
+  font-size: 16px;
+  display: inline-block;
+  /* margin-bottom: 8px; */
+  width: 100%;
+  margin-right: 8px;
+  
+  /* margin: 3px; */
   border-radius: 10px;
   border: 3px solid #286375;
-  float: left;
-  width: 32%;
+  /* float: left;*/
   background-color: #286375;
   color: #faf8e8;
   overflow: hidden;
@@ -18,9 +27,16 @@ div.gallery:hover {
   border: 3px solid #ffee6e;
 }
 
+div.gallery:hover img {
+  transform: scale(1.1);
+  transition: 0.1s ease-in-out;
+}
+
 div.gallery img {
   width: 100%;
   height: auto;
+  margin: 0;
+  padding-bottom: 0;
 }
 
 video {
@@ -28,8 +44,130 @@ video {
 }
 
 div.desc {
-  padding: 15px;
+  position: fixed;
+  bottom: 0;
   text-align: center;
+  transition: .2s;
+  transform: translateY(1em);
+  z-index: 10;
+}
+
+div.descDivRelative {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: rgba(40, 99, 117, 0.6);
+}
+
+div.descDiv {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+div.gallery:hover .descDiv {
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+  z-index: 10;
+}
+
+div.gallery:hover .desc {
+  transform: translateY(0);
+}
+
+div.gallery:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+/* 2 columns */
+@media screen and (min-width: 25em) {
+  div.gallery {
+    width: calc(50% - 12px);
+  }
+  
+  div.gallery:nth-of-type(1n) {
+    margin-right: 8px;
+  }
+  
+  div.gallery:nth-of-type(2n) {
+    margin-right: 0;
+  }
+}
+
+/* 3 columns */
+@media screen and (min-width: 50em) {
+  div.gallery {
+    width: calc(33% - 12px);
+  }
+  
+  div.gallery:nth-of-type(2n) {
+    margin-right: 8px;
+  }
+  
+  div.gallery:nth-of-type(3n) {
+    margin-right: 0;
+  }
+}
+
+/* 4 columns */
+@media screen and (min-width: 75em) {
+  div.gallery {
+    width: calc(25% - 15px);
+  }
+  
+  div.gallery:nth-of-type(3n) {
+    margin-right: 8px;
+  }
+  
+  div.gallery:nth-of-type(4n) {
+    margin-right: 0;
+  }
+}
+
+/* 5 columns */
+@media screen and (min-width: 100em) {
+  div.gallery {
+    width: calc(20% - 16px);
+  }
+  
+  div.gallery:nth-of-type(4n) {
+    margin-right: 8px;
+  }
+  
+  div.gallery:nth-of-type(5n) {
+    margin-right: 0;
+  }
+}
+
+/* 6 columns */
+@media screen and (min-width: 125em) {
+  div.gallery {
+    width: calc(16% - 8px);
+  }
+  
+  div.gallery:nth-of-type(5n) {
+    margin-right: 8px;
+  }
+  
+  div.gallery:nth-of-type(6n) {
+    margin-right: 0;
+  }
 }
 
 div.col-sm-10.text-left h3, hr {
@@ -43,10 +181,8 @@ div.col-sm-10.text-left h3, hr {
 .myImg {
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
 }
-
-.myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
 .modal {
